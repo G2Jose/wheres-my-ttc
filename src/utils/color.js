@@ -32,7 +32,7 @@ const hsvToRgb = (h, s, v) => {
   }).join('');
 };
 
-export const getHsvForValue = (value, high = 30, low = 0) => {
+export const getHsvForValue = (value, high = 50, low = 0) => {
     if (value > high) {
         value = high;
     } else if (value < 0) {
