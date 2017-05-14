@@ -1,6 +1,8 @@
 import React from 'react';
 import { Marker as RMarker } from 'react-map-gl';
 
+import './Marker.css';
+
 class Marker extends React.Component {
 	constructor(props) {
 		super(props);
@@ -35,6 +37,9 @@ class Marker extends React.Component {
 					fill={this.props.color}
 				  />
 				</svg>
+				<div className="marker">
+					{this.props.text}
+				</div>
 			</RMarker>
 		);
 	}

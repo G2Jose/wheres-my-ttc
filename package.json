@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.16.1",
     "immutable": "^3.8.1",
     "r-dom": "^2.3.2",
     "raster-tile-style": "^1.0.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-map-gl": "^3.0.0-alpha.10"
+    "react-map-gl": "^3.0.0-alpha.10",
+    "rxjs": "^5.4.0"
   },
   "devDependencies": {
     "autoprefixer": "6.7.2",

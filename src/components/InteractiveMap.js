@@ -2,6 +2,8 @@ import React from 'react';
 import MapGL from 'react-map-gl';
 
 import Marker from './Marker.js';
+import { $vehicles, getVehicles, timer } from '../utils/api.js';
+import { getRgbForValue } from '../utils/color.js';
 
 class InteractiveMap extends React.Component {
 	constructor(props) {
@@ -10,14 +12,24 @@ class InteractiveMap extends React.Component {
 			viewport: {
 		        latitude: 43.6425690,
 		        longitude: -79.3934600,
-		        zoom: 15,
+		        zoom: 12,
 		        width: this.props.width,
 		        height: this.props.height,
 		        startDragLngLat: null,
 		        isDragging: null
 			},
 			mapStyle: 'mapbox://styles/mapbox/dark-v9',
+			xy: [],
 		}
+	}
+
+	componentDidMount() {
+		$vehicles
+		.subscribe(data => {
+			this.setState({
+				xy: data
+			});
+		});
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -39,6 +51,7 @@ class InteractiveMap extends React.Component {
 	}
 
 	render() {
+		
 	    const {mapStyle, viewport} = this.state;
 	    return (
 	    	<MapGL
@@ -47,7 +60,13 @@ class InteractiveMap extends React.Component {
 				mapStyle={mapStyle}
 				{...viewport}
 			>
-				<Marker xy={{x: 43.6425690, y: -79.3934600}} color="red" />
+				{
+					this.state.xy.map((xy, i) => {
+						return (
+							<Marker xy={{x: xy.lat, y: xy.lon}} color={getRgbForValue(xy.secsSinceReport)} key={i} text={xy.routeId} />
+						);
+					})
+				}
 			</MapGL>
 		);
 	  }
