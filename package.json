@@ -8,7 +8,7 @@
     "raster-tile-style": "^1.0.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "react-map-gl": "^2.0.2"
+    "react-map-gl": "^3.0.0-alpha.10"
   },
   "devDependencies": {
     "autoprefixer": "6.7.2",
