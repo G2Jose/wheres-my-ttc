@@ -3,6 +3,15 @@ import { Marker as RMarker } from 'react-map-gl';
 
 import './Marker.css';
 
+export const MarkerSvg = ({color}) => (
+	<svg height="20" width="20">
+	  <circle
+	  	cx="10" cy="10" r="5" stroke="black" strokeWidth="0"
+		fill={color}
+	  />
+	</svg>
+);
+
 class Marker extends React.Component {
 	constructor(props) {
 		super(props);
@@ -31,12 +40,7 @@ class Marker extends React.Component {
 				latitude={this.state.latitude} longitude={this.state.longitude}
 				offsetLeft={-20} offsetTop={-10}
 			>
-				<svg height="20" width="20">
-				  <circle
-				  	cx="10" cy="10" r="5" stroke="black" strokeWidth="0"
-					fill={this.props.color}
-				  />
-				</svg>
+				<MarkerSvg color={this.props.color} />
 				<div className="marker">
 					{this.props.text}
 				</div>
