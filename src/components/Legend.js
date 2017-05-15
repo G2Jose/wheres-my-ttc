@@ -8,8 +8,8 @@ const Legend = () => (
 		<h1 className="legend__title">
 			Legend
 		</h1>
-		<div className="legend-line"><span><MarkerSvg color="#ff0000" />Stale data (30s or more)</span></div>
-		<div className="legend-line"><span><MarkerSvg color="#00ff00" />Fresh data (&lt;5s)</span></div>
+		<div className="legend-line"><span><MarkerSvg color="#ff0000" />Data 30s ago</span></div>
+		<div className="legend-line"><span><MarkerSvg color="#00ff00" />Data 0s  ago</span></div>
 
 	</div>
 );
