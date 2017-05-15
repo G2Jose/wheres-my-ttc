@@ -64,7 +64,15 @@ class InteractiveMap extends React.Component {
 				{
 					this.state.xy.map((xy, i) => {
 						return (
-							Marker({xy: {x: xy.lat, y: xy.lon}, color: getRgbForValue(xy.secsSinceReport), key: i, text: xy.routeId})
+							Marker({
+								xy: {
+									x: xy.lat,
+									y: xy.lon,
+								},
+								color: getRgbForValue(xy.secsSinceReport),
+								key: i,
+								text: xy.routeId,
+							})
 						);
 					})
 				}
