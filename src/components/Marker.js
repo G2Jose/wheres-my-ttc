@@ -12,41 +12,16 @@ export const MarkerSvg = ({color}) => (
 	</svg>
 );
 
-class Marker extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			latitude: 0,
-			longitude: 0,
-		}
-	}
-
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.xy) {
-			this._updateCoordinates(nextProps.xy.x, nextProps.xy.y);
-		}
-	}
-
-	_updateCoordinates = (x, y) => {
-		this.setState({
-			latitude: x,
-			longitude: y,
-		})
-	}
-
-	render() {
-		return (
-			<RMarker
-				latitude={this.state.latitude} longitude={this.state.longitude}
-				offsetLeft={-20} offsetTop={-10}
-			>
-				<MarkerSvg color={this.props.color} />
-				<div className="marker">
-					{this.props.text}
-				</div>
-			</RMarker>
-		);
-	}
-};
+const Marker = ({color, text, xy}) => (
+	<RMarker
+		latitude={xy.x} longitude={xy.y}
+		offsetLeft={-20} offsetTop={-10}
+	>
+		{MarkerSvg({color})}
+		<div className="marker">
+			{text}
+		</div>
+	</RMarker>
+)
 
 export default Marker;
