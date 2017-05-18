@@ -3,7 +3,7 @@ import MapGL from 'react-map-gl';
 
 import Marker from './Marker.js';
 import Legend from './Legend.js';
-import { $vehicles, getVehicles, timer } from '../utils/api.js';
+import { $vehicles } from '../utils/api.js';
 import { getRgbForValue } from '../utils/color.js';
 
 class InteractiveMap extends React.Component {
@@ -64,15 +64,7 @@ class InteractiveMap extends React.Component {
 				{
 					this.state.xy.map((xy, i) => {
 						return (
-							Marker({
-								xy: {
-									x: xy.lat,
-									y: xy.lon,
-								},
-								color: getRgbForValue(xy.secsSinceReport),
-								key: i,
-								text: xy.routeId,
-							})
+							<Marker xy={{x: xy.lat, y: xy.lon}} color={getRgbForValue(xy.secsSinceReport)} key={i} text={xy.routeId} />
 						);
 					})
 				}
