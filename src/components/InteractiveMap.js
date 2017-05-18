@@ -3,7 +3,7 @@ import MapGL from 'react-map-gl';
 
 import Marker from './Marker.js';
 import Legend from './Legend.js';
-import { $vehicles, getVehicles, timer } from '../utils/api.js';
+import { $vehicles } from '../utils/api.js';
 import { getRgbForValue } from '../utils/color.js';
 
 class InteractiveMap extends React.Component {

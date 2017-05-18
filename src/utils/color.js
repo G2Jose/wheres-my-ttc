@@ -3,7 +3,7 @@ const hsvToRgb = (h, s, v) => {
   if (s === 0) {
     rgb = [v,v,v];
   } else {
-    h = h / 60;
+    h /= 60;
     i = Math.floor(h);
     data = [v*(1-s), v*(1-s*(h-i)), v*(1-s*(1-(h-i)))];
     switch(i) {
