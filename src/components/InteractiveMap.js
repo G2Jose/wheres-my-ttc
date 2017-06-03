@@ -11,9 +11,9 @@ class InteractiveMap extends React.Component {
 		super(props);
 		this.state = {
 			viewport: {
-		        latitude: 43.719333,
-		        longitude: -79.421078,
-		        zoom: 11,
+		        latitude: 43.6536025,
+		        longitude: -79.4004877,
+		        zoom: 13,
 		        width: this.props.width,
 		        height: this.props.height,
 		        startDragLngLat: null,
