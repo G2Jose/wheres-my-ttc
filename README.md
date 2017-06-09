@@ -23,3 +23,5 @@ Deployed at [https://georgejose.com/projects/livetransit/](https://georgejose.co
 - Mobile support using hammer.js
 - Ability to enter an address
 - Ability to toggle display of specific routes
+
+### Contributors Welcome!
