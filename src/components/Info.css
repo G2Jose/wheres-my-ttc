@@ -1,0 +1,11 @@
+.info {
+	position: fixed;
+	bottom: 0;
+	margin: auto;
+	text-align: center;
+	margin: 2px;
+}
+
+.info--github-logo {
+	width: 50px;
+}

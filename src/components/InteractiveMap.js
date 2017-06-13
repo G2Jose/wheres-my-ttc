@@ -3,6 +3,8 @@ import MapGL from 'react-map-gl';
 
 import Marker from './Marker.js';
 import Legend from './Legend.js';
+import Info from './Info.js';
+
 import { $vehicles } from '../utils/api.js';
 import { getRgbForValue } from '../utils/color.js';
 
@@ -27,10 +29,13 @@ class InteractiveMap extends React.Component {
 	componentDidMount() {
 		$vehicles
 		.subscribe(data => {
-			this.setState({
-				xy: data
-			});
+			this.setState({ xy: data });
 		});
+		if (navigator.geolocation) {
+	        navigator.geolocation.getCurrentPosition(position => this._recenterIfToronto(position.coords));
+	    } else {
+	        console.log('nope');
+	    }
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -46,6 +51,51 @@ class InteractiveMap extends React.Component {
 		}
 	}
 
+	_recenter = (coordinates) => {
+		const { latitude, longitude } = coordinates;
+		const newViewport = { latitude, longitude };
+		const viewport = Object.assign({}, this.state.viewport, newViewport);
+	    this.setState({viewport});
+	}
+
+	_recenterIfToronto = (coordinates) => {
+		if (
+			coordinates.longitude <= -79.097489 &&
+			coordinates.latitude <= 43.915783 &&
+			coordinates.longitude >= -79.780606 &&
+			coordinates.latitude >= 43.522938
+		) {
+			console.log('Detected location in Toronto, recentering map');
+			this._recenter(coordinates);
+		} else {
+			console.log('Detected location outside of Toronto, not recentering');
+		}
+	}
+
+	_getBounds = () => {
+		const rawBounds = this.map._getMap().getBounds();
+		const bounds = {
+			lat: {
+				high: rawBounds._ne.lat,
+				low: rawBounds._sw.lat,
+			},
+			lon: {
+				high: rawBounds._ne.lng,
+				low: rawBounds._sw.lng,
+			},
+		}
+		return bounds;
+	}
+
+	_withinBounds = (latLon) => {
+		return (
+			latLon.lat >= this._getBounds().lat.low &&
+			latLon.lat <= this._getBounds().lat.high &&
+			latLon.lon >= this._getBounds().lon.low &&
+			latLon.lon <= this._getBounds().lon.high
+		);
+	}
+
 	_onChangeViewport = (newViewport) => {
 	    const viewport = Object.assign({}, this.state.viewport, newViewport);
 	    this.setState({viewport});
@@ -59,15 +109,19 @@ class InteractiveMap extends React.Component {
 		    	mapboxApiAccessToken="pk.eyJ1IjoiZ2Vqb3NlIiwiYSI6ImNqMm8xZTg5ZjAyNHYzM3FieW14eGxvaGMifQ.DlQAXVocu-c7yXDxdTQ-tA"
 				onChangeViewport={this._onChangeViewport}
 				mapStyle={mapStyle}
+				ref={(map) => this.map = map}
 				{...viewport}
 			>
 				{
-					this.state.xy.map((xy, i) => {
+					this.state.xy
+					.filter(this._withinBounds)
+					.map((xy, i) => {
 						return (
 							<Marker xy={{x: xy.lat, y: xy.lon}} color={getRgbForValue(xy.secsSinceReport)} key={i} text={xy.routeId} />
 						);
 					})
 				}
+				<Info />
 				<Legend />
 			</MapGL>
 		);
