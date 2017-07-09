@@ -4,6 +4,8 @@ A near-realtime visualization of Toronto Transit Commission vehicles using [reac
 
 Deployed at [https://georgejose.com/projects/livetransit/](https://georgejose.com/projects/livetransit/)
 
+[Medium Blog](https://blog.georgejose.com/visualizing-transit-vehicle-locations-on-a-map-in-real-time-67a97c77cbe3)
+
 ### Screenshots
 
 <p align="center">
