@@ -1,5 +1,7 @@
 # Where's my TTC?
 
+[![Build Status](https://travis-ci.org/G2Jose/wheres-my-ttc.svg?branch=master)](https://travis-ci.org/G2Jose/wheres-my-ttc)
+
 A near-realtime visualization of Toronto Transit Commission vehicles using [react-map-gl](https://github.com/uber/react-map-gl) & [nextbus API](https://www.nextbus.com)
 
 Deployed at [https://georgejose.com/projects/livetransit/](https://georgejose.com/projects/livetransit/)

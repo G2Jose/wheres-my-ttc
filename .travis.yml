@@ -8,21 +8,12 @@ install:
   - cd ..
 
 script:
+  - npm run lint
   - CI="" npm run build
   - rm -rf personal-website/public/projects/livetransit/*
   - mv build/* personal-website/public/projects/livetransit/
   - cd personal-website
 
 after_success:
-  - ls
   - npm install -g firebase-tools
-  - ls && firebase deploy
-
-# deploy:
-#   provider: firebase
-#   token:
-#     secure: "eE3Pvb0q0eGsSSF00FRxpCktifI+9kYuhuD487KvtC2aRwfhKMvYtrIfUEAN6YuDlUNgOcXb/B0QV38RLEGXON4KO9ki/UQrljq4za/MQ4WnVcBrrRUJNWLuQTEkZ5Ww9etmae2AJx8eDO9H5AL4OkVL+mn5Q42SVlH4AC0Ud9qb4Sg3paYjTIi/ieOkMmLiQTkyBuJdnn08dmOUE8CmiTdDEMiRzhMcVYrl+kdWz7YZ903MNkyTxnBZcMRf3FxuWSG60uJrXDFvaoLh/ecWefS14Rv4CrNCeJe5fMuZjUqNimhN+eZOBNV0MqsJQfD7IKOydZ2SEtzrz+M5aUN0t2OdTP/rPAWfLpXnoUjaO1EiAXiEG+FFDLe+W4GRtLk0lauyN/jhZzoCd9x2XosxMm+27gZi5mNA+q90nhpNwYCSGrCrD7aiIEsvkk7oN6NTuSuUGtV65AI6U7WXUNdK2J9NW/NesRdbat2sJbH/b7IQHk7cVvoR9BPkKfQoh1QrXbYE4K7cop1Co5sIq/P4gSV6TKV2axooSgO9fV7g++kSuK31aUigCnJMn6/osy4cq4ergq1/TZ2K5/dKNHJWMmMj9N5kZkyw5/sYd7PBVqdX9h1WtdkAkqV5LgrZ89btZZqy1tXMQJ2H1hAYMhX0benq7E3+lzGgErbN+iCJm8U="
-
-# env:
-#   global:
-#     secure: eE3Pvb0q0eGsSSF00FRxpCktifI+9kYuhuD487KvtC2aRwfhKMvYtrIfUEAN6YuDlUNgOcXb/B0QV38RLEGXON4KO9ki/UQrljq4za/MQ4WnVcBrrRUJNWLuQTEkZ5Ww9etmae2AJx8eDO9H5AL4OkVL+mn5Q42SVlH4AC0Ud9qb4Sg3paYjTIi/ieOkMmLiQTkyBuJdnn08dmOUE8CmiTdDEMiRzhMcVYrl+kdWz7YZ903MNkyTxnBZcMRf3FxuWSG60uJrXDFvaoLh/ecWefS14Rv4CrNCeJe5fMuZjUqNimhN+eZOBNV0MqsJQfD7IKOydZ2SEtzrz+M5aUN0t2OdTP/rPAWfLpXnoUjaO1EiAXiEG+FFDLe+W4GRtLk0lauyN/jhZzoCd9x2XosxMm+27gZi5mNA+q90nhpNwYCSGrCrD7aiIEsvkk7oN6NTuSuUGtV65AI6U7WXUNdK2J9NW/NesRdbat2sJbH/b7IQHk7cVvoR9BPkKfQoh1QrXbYE4K7cop1Co5sIq/P4gSV6TKV2axooSgO9fV7g++kSuK31aUigCnJMn6/osy4cq4ergq1/TZ2K5/dKNHJWMmMj9N5kZkyw5/sYd7PBVqdX9h1WtdkAkqV5LgrZ89btZZqy1tXMQJ2H1hAYMhX0benq7E3+lzGgErbN+iCJm8U=
+  - firebase deploy
