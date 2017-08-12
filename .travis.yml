@@ -16,7 +16,7 @@ script:
 after_success:
   - ls
   - npm install -g firebase-tools
-  - firebase deploy
+  - ls && firebase deploy
 
 # deploy:
 #   provider: firebase
