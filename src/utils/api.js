@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Rx from 'rxjs';
 
-const API_URL = 'https://georgejose.com:3002/agencies/ttc/vehicles';
+const API_URL = 'https://gjose.ca:3002/agencies/ttc/vehicles';
 
 export const getVehicles = () => new Promise((resolve, reject) => {
 	axios.get(API_URL)
