@@ -14,6 +14,8 @@ script:
   - mv build/* personal-website/public/projects/livetransit/
   - cd personal-website
 
-after_success:
-  - npm install -g firebase-tools
-  - firebase deploy
+deploy:
+  provider: script
+  script: deploy.sh
+  on:
+    branch: master
