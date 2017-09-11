@@ -1,21 +1,21 @@
 .legend {
-	background-color: grey;
-	position: fixed;
-	bottom: 0;
-	right: 0;
-	padding: 3px;
-	padding-left: 8px;
-	padding-right: 8px;
-	padding-bottom: 8px;
-	margin: 2px;
+  background-color: grey;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 3px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 8px;
+  margin: 2px;
 }
 
 .legend__title {
-	margin-top: 4px;
-	margin-bottom: 4px;
-	font-size: 1rem;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  font-size: 1rem;
 }
 
 .legend-line {
-	font-size: 0.9rem;
+  font-size: 0.9rem;
 }
