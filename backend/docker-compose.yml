@@ -1,0 +1,20 @@
+version: '3'
+services:
+  restbus: 
+    network_mode: "bridge"
+    restart: always
+    links:
+      - redis
+    ports:
+      - "3000:3000"
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+  redis: 
+    network_mode: "bridge"
+    restart: always
+    ports:
+      - "6379:6379"
+    build:
+      context: .
+      dockerfile: Dockerfile.redis
